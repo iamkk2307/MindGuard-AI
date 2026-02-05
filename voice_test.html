@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Voice Test</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+
+        button {
+            padding: 20px 40px;
+            font-size: 18px;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        #startBtn {
+            background: #667eea;
+            color: white;
+            border: none;
+        }
+
+        #stopBtn {
+            background: #e53e3e;
+            color: white;
+            border: none;
+        }
+
+        #result {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            min-height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🎙️ Voice Recognition Test</h1>
+    <p>Open this file directly in Chrome (double-click it)</p>
+
+    <button id="startBtn" onclick="startRecording()">🎙️ Start Recording</button>
+    <button id="stopBtn" onclick="stopRecording()" disabled>⏹️ Stop</button>
+
+    <p id="status">Click Start and speak...</p>
+    <div id="result"></div>
+
+    <script>
+        let recognition;
+        let transcript = '';
+
+        if ('webkitSpeechRecognition' in window) {
+            recognition = new webkitSpeechRecognition();
+            recognition.continuous = true;
+            recognition.interimResults = true;
+            recognition.lang = 'en-US';
+
+            recognition.onstart = () => {
+                document.getElementById('status').innerHTML = '🔴 Listening...';
+                document.getElementById('startBtn').disabled = true;
+                document.getElementById('stopBtn').disabled = false;
+            };
+
+            recognition.onresult = (event) => {
+                transcript = '';
+                for (let i = 0; i < event.results.length; i++) {
+                    transcript += event.results[i][0].transcript;
+                }
+                document.getElementById('result').innerHTML = '<b>You said:</b> ' + transcript;
+            };
+
+            recognition.onerror = (event) => {
+                document.getElementById('status').innerHTML = '❌ Error: ' + event.error;
+                document.getElementById('startBtn').disabled = false;
+                document.getElementById('stopBtn').disabled = true;
+            };
+
+            recognition.onend = () => {
+                document.getElementById('status').innerHTML = '✅ Done! Copy your text above.';
+                document.getElementById('startBtn').disabled = false;
+                document.getElementById('stopBtn').disabled = true;
+            };
+        } else {
+            document.getElementById('status').innerHTML = '❌ Speech recognition not supported';
+        }
+
+        function startRecording() {
+            transcript = '';
+            document.getElementById('result').innerHTML = '';
+            recognition.start();
+        }
+
+        function stopRecording() {
+            recognition.stop();
+        }
+    </script>
+</body>
+
+</html>

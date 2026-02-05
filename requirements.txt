@@ -1,0 +1,11 @@
+pandas
+numpy
+scikit-learn
+streamlit
+nltk
+joblib
+xgboost
+pywebview
+SpeechRecognition
+pyaudio
+streamlit-audiorecorder

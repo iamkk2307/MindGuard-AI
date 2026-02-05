@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindGuard AI - Project Presentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --text-color: #ffffff;
+            --accent-color: #00d9ff;
+            --secondary-color: #00ff88;
+            --card-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .slides-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+            width: 900%;
+            /* 9 slides */
+        }
+
+        .slide {
+            width: 10vw;
+            /* 100% / 10 slides conceptually, but dealing with container width */
+            width: 100vw;
+            height: 100vh;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px 80px;
+            position: relative;
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 1.2rem;
+            color: #555;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 30px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        p,
+        li {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #d0d0d0;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 10px;
+        }
+
+        ul li::before {
+            content: "▹";
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .architecture-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .arch-node {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid var(--accent-color);
+            text-align: center;
+            font-weight: bold;
+            min-width: 150px;
+        }
+
+        .arrow {
+            font-size: 2rem;
+            color: #555;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        button {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .demo-placeholder {
+            width: 100%;
+            height: 300px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px dashed #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="slides-container" id="container">
+
+        <!-- Slide 1: Title & Team -->
+        <div class="slide">
+            <div class="slide-number">01</div>
+            <div>
+                <p style="color: var(--accent-color); font-weight: bold; letter-spacing: 2px;">UDGAM PROJECT
+                    PRESENTATION</p>
+                <h1>MindGuard AI</h1>
+                <p style="font-size: 1.5rem; color: #aaa;">AI-Powered Mental Health Risk Detection System</p>
+                <div
+                    style="margin-top: 50px; padding: 30px; background: rgba(255,255,255,0.03); border-radius: 10px; display: inline-block;">
+                    <h3>Team Members</h3>
+                    <p>• MPV Kethan Kumar</p>
+                    <p>• Hemanth Sri Sai Raja</p>
+                    <p>• J YaswanthSai</p>
+                    <p>• Chetan Reddy</p>
+                    <p style="margin-top: 20px; color: var(--secondary-color);">Theme: AI & HealthTech</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Problem Statement -->
+        <div class="slide">
+            <div class="slide-number">02</div>
+            <h2>The Problem Statement</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>The Silent Crisis</h3>
+                    <p>Mental health issues among students are rising, yet often go invisible.</p>
+                    <ul>
+                        <li><strong>1 in 4</strong> students suffer from stress, anxiety, or depression.</li>
+                        <li><strong>75%</strong> of cases remain undetected until a crisis occurs.</li>
+                        <li>Stigma prevents many from seeking professional help.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Impact</h3>
+                    <p>Delayed intervention leads to:</p>
+                    <ul>
+                        <li>📉 Academic decline</li>
+                        <li>🚫 Social isolation</li>
+                        <li>💔 Severe long-term health consequences</li>
+                    </ul>
+                    <div style="margin-top: 20px; text-align: center; color: var(--accent-color); font-style: italic;">
+                        "We need a way to listen to the silent signals."
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Proposed Solution -->
+        <div class="slide">
+            <div class="slide-number">03</div>
+            <h2>Proposed Solution</h2>
+            <p style="font-size: 1.4rem;"><strong>MindGuard AI:</strong> An intelligent, privacy-first screening tool.
+            </p>
+            <div class="grid-3" style="margin-top: 30px;">
+                <div class="card">
+                    <h3>🔍 Early Detection</h3>
+                    <p>Analyzes text from journals or social media to identify early signs of stress and anxiety using
+                        NLP.</p>
+                </div>
+                <div class="card">
+                    <h3>🛡️ Privacy First</h3>
+                    <p>All processing happens locally on the device. No personal data is sent to the cloud.</p>
+                </div>
+                <div class="card">
+                    <h3>🧠 Explainable AI</h3>
+                    <p>Doesn't just predict risk—explains <em>why</em> by highlighting trigger words, building trust.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Technical Architecture -->
+        <div class="slide">
+            <div class="slide-number">04</div>
+            <h2>Technical Architecture</h2>
+            <p>End-to-end flow of data from user input to risk assessment.</p>
+
+            <div class="architecture-diagram">
+                <div class="arch-node">
+                    Frontend UI<br>
+                    <span style="font-size:0.8rem; color:#888;">Streamlit</span>
+                </div>
+                <div class="arrow">→</div>
+                <div class="arch-node">
+                    Preprocessing<br>
+                    <span style="font-size:0.8rem; color:#888;">Clean & Tokenize</span>
+                </div>
+                <div class="arrow">→</div>
+                <div class="arch-node">
+                    ML Engine<br>
+                    <span style="font-size:0.8rem; color:#888;">TF-IDF + XGBoost</span>
+                </div>
+                <div class="arrow">→</div>
+                <div class="arch-node">
+                    Output<br>
+                    <span style="font-size:0.8rem; color:#888;">Risk Card + XAI</span>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 40px;">
+                <h3>Data Flow</h3>
+                <ul>
+                    <li><strong>Input:</strong> User enters text reflection.</li>
+                    <li><strong>Processing:</strong> Text is cleaned (NLTK), vectorized (TF-IDF).</li>
+                    <li><strong>Model:</strong> XGBoost predicts probability of Normal/Stress/Anxiety/Depression.</li>
+                    <li><strong>Storage:</strong> Session State (Ephemeral) & Local Logs (Encrypted).</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 5: Tech Stack -->
+        <div class="slide">
+            <div class="slide-number">05</div>
+            <h2>Software Libraries & Tech Stack</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Core Technology</h3>
+                    <ul>
+                        <li><strong>Python 3.10:</strong> Robust ecosystem for AI/ML.</li>
+                        <li><strong>Streamlit:</strong> For rapid, interactive web application development.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Specialized Libraries</h3>
+                    <ul>
+                        <li><strong>XGBoost:</strong> Chosen for its speed and high performance on structured/text data
+                            compared to Deep Learning (lighter weight).</li>
+                        <li><strong>Scikit-learn:</strong> For TF(Measures how often a word appears) IDF(Measures how
+                            Important a term is) vectorization and pipeline management.</li>
+                        <li><strong>Pandas:</strong> Efficient data manipulation.</li>
+                        <li><strong>NLTK:</strong> Standard library for Natural Language Processing(Breaking Down and
+                            Understanding).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Methodology & Models -->
+        <div class="slide">
+            <div class="slide-number">06</div>
+            <h2>Methodology & AI Models</h2>
+            <div class="grid-2">
+                <div>
+                    <h3>1. Text Preprocessing</h3>
+                    <p>Raw text is noisy. We apply:</p>
+                    <ul>
+                        <li>Lowercase conversion</li>
+                        <li>Removal of punctuation & special characters</li>
+                        <li>Stopword removal (removing "and", "the", etc.)</li>
+                        <li>Lemmatization (converting "running" to "run")</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>2. Feature Extraction (TF-IDF)</h3>
+                    <p>Converts text to numerical vectors based on word importance rarity.</p>
+                    <h3 style="margin-top:20px;">3. Classification Model (XGBoost)</h3>
+                    <p>A Gradient Boosting algorithm that builds an ensemble of decision trees.</p>
+                    <ul>
+                        <li><strong>Why?</strong> Handles imbalance well, provides feature importance for
+                            XAI(Explainable Artificial Intelligence), and is
+                            faster than neural networks.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Slide 7: Challenges & Solutions -->
+        <div class="slide">
+            <div class="slide-number">07</div>
+            <h2>Challenges & Solutions</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>🚩 Challenge 1</h3>
+                    <p><strong>Imbalanced Data:</strong> Real-world data has far more "Normal" cases than "Crisis"
+                        cases.</p>
+                    <p style="color: var(--secondary-color);"><strong>Solution:</strong> Used synthetic data generation
+                        and balanced sampling techniques to ensure fair training.</p>
+                </div>
+                <div class="card">
+                    <h3>🚩 Challenge 2</h3>
+                    <p><strong>Misclassification:</strong> Model flagged "happy" text as "Anomaly" due to unseen
+                        vocabulary.</p>
+                    <p style="color: var(--secondary-color);"><strong>Solution:</strong> Augmented training set with
+                        diverse positive affirmation dataset.</p>
+                </div>
+                <div class="card">
+                    <h3>🚩 Challenge 3</h3>
+                    <p><strong>Resource Constraints:</strong> Running ML on standard laptops (8GB RAM).</p>
+                    <p style="color: var(--secondary-color);"><strong>Solution:</strong> Optimized TF-IDF max features
+                        (8000) and used lightweight XGBoost configuration.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Scalability -->
+        <div class="slide">
+            <div class="slide-number">08</div>
+            <h2>Scalability & Future Scope</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>🚀 Scalability</h3>
+                    <ul>
+                        <li><strong>Dockerized:</strong> The app is containerized for consistent deployment anywhere.
+                        </li>
+                        <li><strong>Cloud Ready:</strong> Can be deployed to AWS/Azure/Streamlit Cloud instantly.</li>
+                        <li><strong>Modular Code:</strong> Separated Model/UI/Data layers allow independent upgrades.
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>🔮 Future Scope</h3>
+                    <ul>
+                        <li><strong>Voice Analysis:</strong> Analyzing tone/pitch for audio-based detection.</li>
+                        <li><strong>Therapist Integration:</strong> Secure dashboard for therapists to monitor patient
+                            progress.</li>
+                        <li><strong>Multilingual Support:</strong> Extending NLP to support local languages.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Conclusion -->
+        <div class="slide">
+            <div class="slide-number">09</div>
+            <div style="text-align: center;">
+                <h1>Conclusion</h1>
+                <p style="font-size: 1.5rem; max-width: 800px; margin: 0 auto;">
+                    MindGuard AI demonstrates that accurate, privacy-preserving mental health screening is possible
+                    using accessible AI technologies.
+                </p>
+                <div style="margin-top: 50px;">
+                    <h2 style="border: none;">Thank You!</h2>
+                    <p>Questions?</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="controls">
+        <button onclick="prevSlide()">← Prev</button>
+        <button onclick="nextSlide()">Next →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 9;
+        const container = document.getElementById('container');
+
+        function updateSlide() {
+            container.style.transform = `translateX(-${currentSlide * 100}vw)`;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+    </script>
+</body>
+
+</html>
